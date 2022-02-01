@@ -1,4 +1,7 @@
 pipeline{
+    agent {
+      label 'CD-Agent'
+    }
     parameters{
        booleanParam(name: "LoadJenkinsfile", defaultValue: false, description: 'Only Check in case jenkinsfile is updated in git repo.')
        choice choices: ['dbxp-releases'], description: 'specify the path to copy artifacts from release in Jfrog', name: 'DBXP_TARGET_REPO'
@@ -10,5 +13,10 @@ pipeline{
        booleanParam defaultValue: false, description: 'Check this box to add logging service in the bundle', name: 'LOGGING_SERVICE_ENABLED'
        booleanParam defaultValue: false, description: 'Check this box to add reporting in the bundle', name: 'REPORTING_ENABLED'
        booleanParam defaultValue: false, description: 'Check this box to add MAAS in the bundle', name: 'MAAS_ENABLED'
+    }
+    stages{
+        stage{
+            script {echo "Hello"}
+        }
     }
 }
