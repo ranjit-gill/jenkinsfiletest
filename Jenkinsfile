@@ -16,7 +16,13 @@ pipeline{
     }
     stages{
         stage{
-            script {echo "Hello"}
+            steps{
+                script{
+                    echo "hello"
+                }  
+              
+            }
+            
         }
     }
 }
