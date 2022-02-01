@@ -15,19 +15,34 @@ pipeline{
        booleanParam defaultValue: false, description: 'Check this box to add MAAS in the bundle', name: 'MAAS_ENABLED'
     }
         stages {
-        stage('Build') {
+            stage('Update Config'){
+                when { expression {params.LoadJenkinsfile}}
+                steps{
+                    echo 'Latest Jenkinsfile Loaded Successfully'
+                    sh 'exit 0'
+                }
+            }   
+         
+        stage('Common: Copy Artifacts and Git Tagging') {
+            when { expression { !params.LoadJenkinsfile }
+             expression { env.TAGGING == "true" }
+            }
             steps {
-                echo 'Building..'
+                echo 'Copy Artifacts and Git Tagging'
             }
         }
-        stage('Test') {
+            
+         
+        stage('DBXP: Copy Artifacts and Git Tagging') {
             steps {
-                echo 'Testing..'
+                echo 'Copy Artifacts and Git Tagging'
             }
         }
-        stage('Deploy') {
+        
+            
+        stage('Dependent Repos: Git Tagging') {
             steps {
-                echo 'Deploying....'
+                echo 'Copy Artifacts and Git Tagging'
             }
         }
     }
