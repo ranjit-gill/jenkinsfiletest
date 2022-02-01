@@ -11,7 +11,4 @@ pipeline{
        booleanParam defaultValue: false, description: 'Check this box to add reporting in the bundle', name: 'REPORTING_ENABLED'
        booleanParam defaultValue: false, description: 'Check this box to add MAAS in the bundle', name: 'MAAS_ENABLED'
     }
-    environments{}
-    stages{
-    }
 }
