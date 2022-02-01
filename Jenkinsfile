@@ -14,15 +14,21 @@ pipeline{
        booleanParam defaultValue: false, description: 'Check this box to add reporting in the bundle', name: 'REPORTING_ENABLED'
        booleanParam defaultValue: false, description: 'Check this box to add MAAS in the bundle', name: 'MAAS_ENABLED'
     }
-    stages{
-        stage{
-            steps{
-                script{
-                    echo "hello"
-                }  
-              
+        stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
             }
-            
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
         }
     }
 }
